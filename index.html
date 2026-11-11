@@ -754,6 +754,64 @@ body.doc-open .dock,body.doc-open .side{display:none}
   .faq summary::after{top:27px}
   .faq details p{padding:0 8px 22px 38px;font-size:13px}
 }
+/* ==== SNS-native layer ==== */
+/* 1. stories */
+.stories{margin:0 calc(-1*max(22px,env(safe-area-inset-left,0px))) 56px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.stories::-webkit-scrollbar{display:none}
+.stories-in{display:flex;justify-content:center;gap:22px;width:max-content;min-width:100%;padding:6px max(22px,env(safe-area-inset-left,0px)) 4px}
+.story{display:flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none;color:var(--ink);flex:none;width:76px}
+.story .ring{width:72px;height:72px;border-radius:50%;padding:3px;background:conic-gradient(from 210deg,var(--orange),#F6C29C,var(--orange-num),var(--orange));display:block;position:relative;transition:transform .3s ease}
+.story .ring::before{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--bg)}
+.story .ring>*{position:absolute;inset:6px;width:calc(100% - 12px);height:calc(100% - 12px);border-radius:50%;object-fit:cover;background:var(--peach)}
+.story .ring svg{padding:15px;fill:none;stroke:var(--orange);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.story .ring img.lg{object-fit:contain;padding:12px;background:var(--bg)}
+.story small{font-size:11px;letter-spacing:.02em;white-space:nowrap;line-height:1.4}
+.story:hover .ring{transform:scale(1.06)}
+@media (max-width:900px){.stories-in{justify-content:flex-start;gap:16px}.stories{margin-bottom:44px}.story{width:68px}.story .ring{width:64px;height:64px}.story .ring svg{padding:13px}}
+/* 2. reels voice */
+.voice article{position:relative;width:250px;aspect-ratio:9/16;padding:0 18px 18px;border-radius:24px;overflow:hidden;justify-content:flex-end;gap:8px;color:var(--white);background:#2b2522}
+.voice .vph{position:absolute;inset:0;margin:0;aspect-ratio:auto;z-index:0}
+.voice .vph img{width:100%;height:100%}
+.voice article::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(20,14,10,.38) 0%,rgba(20,14,10,0) 18%,rgba(20,14,10,0) 40%,rgba(20,14,10,.78) 72%,rgba(20,14,10,.9) 100%);pointer-events:none}
+.voice article>*:not(.vph){position:relative;z-index:2}
+.voice .vq{display:none}
+.vbar{position:absolute !important;top:12px;left:12px;right:12px;display:flex;gap:4px}
+.vbar i{flex:1;height:2.5px;border-radius:2px;background:rgba(255,255,255,.35)}
+.vbar i.on{background:rgba(255,255,255,.95)}
+.voice h3{color:var(--white);font-size:15px;line-height:1.6}
+.voice p.c{color:rgba(255,255,255,.85);font-size:12px;line-height:1.8}
+.voice footer{border-top:1px solid rgba(255,255,255,.3);padding-top:10px;margin-top:2px;font-size:12px;color:var(--white)}
+.voice .vm{width:30px;height:30px;font-size:12px;background:rgba(255,255,255,.2);color:var(--white)}
+.voice footer small{color:rgba(255,255,255,.75);border-left-color:rgba(255,255,255,.3)}
+.voice article{cursor:pointer}
+@media (max-width:600px){.voice article{width:228px}}
+/* 3. FAQ as DM */
+.faq.dm{background:var(--bg);border-radius:28px;box-shadow:var(--sh2);padding:0 0 22px;gap:0;overflow:hidden}
+.dm-head{display:flex;align-items:center;gap:12px;padding:16px 22px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.dm-hav{width:42px;height:42px;border-radius:50%;background:var(--peach);display:grid;place-items:center;flex:none}
+.dm-hav img{width:30px;height:auto}
+.dm-head b{display:block;font-family:var(--f-min);font-weight:500;font-size:15px;line-height:1.4}
+.dm-head small{font-size:11px;color:var(--muted)}
+.faq.dm details{background:none;box-shadow:none;border-radius:0;padding:6px 20px;translate:none !important}
+.faq.dm summary{display:flex;align-items:flex-start;gap:10px;padding:0;font-family:var(--f-go);font-size:14px;letter-spacing:.03em;line-height:1.75}
+.faq.dm summary::before,.faq.dm summary::after{content:none}
+.dm-av{width:30px;height:30px;border-radius:50%;background:var(--peach-deep);color:var(--orange);font-family:var(--f-en);font-style:italic;font-size:17px;display:grid;place-items:center;flex:none;margin-top:4px}
+.dm-q{background:var(--peach);border-radius:4px 18px 18px 18px;padding:10px 16px;max-width:82%;transition:background .2s}
+.faq.dm summary:hover .dm-q{background:var(--peach-deep)}
+.faq.dm details[open] .dm-q{background:var(--peach-deep)}
+.dm-a{display:flex;align-items:flex-end;justify-content:flex-end;gap:8px;margin:10px 0 6px;animation:dgin .45s ease both}
+.faq.dm .dm-a p{padding:10px 16px;margin:0;background:var(--orange);color:var(--white);border-radius:18px 4px 18px 18px;max-width:78%;font-size:13.5px;line-height:1.8;order:2}
+.dm-read{font-size:10px;color:var(--muted);order:1;white-space:nowrap}
+.dm-tim{width:30px;height:30px;border-radius:50%;background:var(--peach);object-fit:contain;padding:5px;order:3;flex:none}
+@media (max-width:600px){.faq.dm details{padding:5px 14px}.dm-q{max-width:86%}.faq.dm .dm-a p{max-width:80%;font-size:13px}.faq.dm summary{font-size:13.5px;padding:0}}
+/* 5. hashtag ticker */
+.ticker{position:absolute;left:0;right:0;bottom:calc(var(--R) + 26px);overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);pointer-events:none}
+.tk-in{display:flex;gap:30px;width:max-content;animation:tick 46s linear infinite}
+.tk-in span{font-family:var(--f-min);font-size:15px;letter-spacing:.08em;color:var(--orange);opacity:.75;white-space:nowrap}
+@keyframes tick{to{transform:translateX(-50%)}}
+#diagnosis,#voice{padding-bottom:calc(150px + var(--R)) !important}
+@media (max-width:900px){#diagnosis,#voice{padding-bottom:calc(116px + var(--R)) !important}.ticker{bottom:calc(var(--R) + 20px)}.tk-in span{font-size:13px}}
+@media (prefers-reduced-motion:reduce){.tk-in{animation:none}}
 </style>
 </head>
 <body>
@@ -825,6 +883,7 @@ body.doc-open .dock,body.doc-open .side{display:none}
 <section class="sec" id="worries">
   <div class="orbs" aria-hidden="true"><i></i><i></i></div>
   <div class="wrap">
+    <nav class="stories" aria-label="ページ内メニュー"><div class="stories-in"><a class="story" href="#diagnosis"><span class="ring"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0-3.5 10.900V16h7v-2.100A6 6 0 0 0 12 3zM9.500 19h5M10.500 21.500h3"/></svg></span><small>タイプ診断</small></a><a class="story" href="#about"><span class="ring"><img src="img/logo-tim-o2.png" alt="" class="lg"></span><small>Timについて</small></a><a class="story" href="#job"><span class="ring"><img src="img/work.jpg" alt="" loading="lazy" style="object-position:60% center"></span><small>運用代行とは</small></a><a class="story" href="#curriculum"><span class="ring"><img src="img/skill.jpg" alt="" loading="lazy" style="object-position:55% center"></span><small>カリキュラム</small></a><a class="story" href="#voice"><span class="ring"><img src="img/voice-yh.jpg" alt="" loading="lazy" style="object-position:46% 30%"></span><small>受講生の声</small></a><a class="story" href="#flow"><span class="ring"><img src="img/support.jpg" alt="" loading="lazy" style="object-position:50% 40%"></span><small>相談の流れ</small></a><a class="story" href="#faq"><span class="ring"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.500h16v10H10l-4.500 3.500v-3.500H4z"/><path d="M9.500 9.300a2.500 2.300 0 1 1 3.300 2.100c-.600.300-.800.700-.800 1.200M12 14.300h.01"/></svg></span><small>よくある質問</small></a></div></nav>
     <div class="head"><span class="en">worries</span><h2>その<wbr>「このままで<wbr>いいのかな」、<br>放っておいていませんか。</h2><p>当てはまる心の<wbr>声を、<wbr>タップしてみてください。</p></div>
     <div class="wv" id="wv"><ul class="wv-col l"><li><button type="button" aria-pressed="false">このまま<wbr>今の<wbr>会社で、<wbr>10年後も<wbr>同じ<wbr>毎日なのかな</button></li><li><button type="button" aria-pressed="false">副業したいけど、<wbr>何が<wbr>自分に<wbr>合うのか<wbr>分からない</button></li><li><button type="button" aria-pressed="false">スキルも<wbr>実績も<wbr>ない。<wbr>今からじゃ<wbr>遅い<wbr>気が<wbr>する</button></li></ul><div class="wv-fig"><svg class="ill" viewBox="0 0 200 210" aria-hidden="true"><circle class="blob" cx="100" cy="112" r="84"/><path d="M50 196c0-44 21-80 50-80s50 36 50 80"/><path d="M91 104q9 6 18 0"/><circle class="cover" cx="100" cy="80" r="26"/><path d="M75 75c1-19 17-28 34-22c10 4 16 12 17 22"/><path d="M89 82h7M106 82h7"/><path d="M95 95q5-3 10 0"/><path class="cover" d="M62 196l7-32h62l7 32z"/><circle cx="100" cy="180" r="2.5"/><path d="M16 196H184"/><circle class="ac" cx="140" cy="56" r="3"/><circle class="ac" cx="151" cy="44" r="4.5"/><path class="ac" d="M160 34c-7-10 5-19 12-11c6-8 18 0 12 9c8 4 3 15-5 12c-4 8-15 6-15-2c-8 2-11-6-4-8z"/></svg></div><ul class="wv-col r"><li><button type="button" aria-pressed="false">本業が<wbr>忙しくて、<wbr>勉強する<wbr>時間なんて<wbr>取れない</button></li><li><button type="button" aria-pressed="false">独学で<wbr>始めたけど、<wbr>結局<wbr>ひとりでは<wbr>続かなかった</button></li><li><button type="button" aria-pressed="false">収入の<wbr>柱が、<wbr>会社の<wbr>お給料<wbr>ひとつだけで<wbr>不安</button></li></ul></div>
     <div class="wv-out"><p class="wv-msg" id="wv-msg" aria-live="polite">いくつ当てはまりましたか？</p><a class="btn-o" id="wv-go" href="#diagnosis" hidden>1分でタイプ診断へ</a></div>
@@ -850,6 +909,7 @@ body.doc-open .dock,body.doc-open .side{display:none}
       </div>
     </div>
   </div>
+  <div class="ticker" aria-hidden="true"><div class="tk-in"><span>#SNS運用代行</span><span>#未経験から</span><span>#在宅ワーク</span><span>#副業</span><span>#スキマ時間</span><span>#会社員のまま</span><span>#完全オンライン</span><span>#Instagram</span><span>#リール動画</span><span>#案件獲得</span><span>#SNS運用代行</span><span>#未経験から</span><span>#在宅ワーク</span><span>#副業</span><span>#スキマ時間</span><span>#会社員のまま</span><span>#完全オンライン</span><span>#Instagram</span><span>#リール動画</span><span>#案件獲得</span></div></div>
 </section>
 
 <section class="sec peach" id="about">
@@ -964,14 +1024,15 @@ body.doc-open .dock,body.doc-open .side{display:none}
     <div class="head"><span class="en">voice</span><h2>受講生の声</h2></div>
     <div class="voice-wrap"><div class="voice">
       <article><div class="vph"><img src="img/voice-st.jpg" alt="海辺の流木に座る受講生の後ろ姿" loading="lazy" style="object-position:42% 62%"></div><span class="vq" aria-hidden="true">“</span><h3>SNSでお店の売上が3倍に</h3><p class="c">お店の<wbr>来客数が<wbr>2〜3倍に<wbr>増えました。<wbr>今では<wbr>3店舗目も<wbr>考えられるように。</p><footer><span class="vm">S.T</span><b>S.Tさん</b><small>飲食店経営</small></footer></article>
-      <article><div class="vph"><img src="img/voice-yh.jpg" alt="ジャングルのブランコに乗る受講生" loading="lazy" style="object-position:50% 50%"></div><span class="vq" aria-hidden="true">“</span><h3>スキルアップで<wbr>自分の<wbr>キャリアが<wbr>変わりました</h3><p class="c">脱サラして<wbr>時間も<wbr>場所も<wbr>自由な<wbr>フリーランスへ。<wbr>自分が<wbr>想像していなかった<wbr>自分に<wbr>なることができました。</p><footer><span class="vm">T.R</span><b>T.Rさん</b><small>営業</small></footer></article>
-      <article><div class="vph"><img src="img/voice-tr.jpg" alt="カフェでくつろぐ受講生" loading="lazy" style="object-position:46% 34%"></div><span class="vq" aria-hidden="true">“</span><h3>就活迷子からフリーランスへ</h3><p class="c">選択肢の<wbr>幅が<wbr>一気に<wbr>広がりました。<wbr>今では<wbr>時間も<wbr>場所も<wbr>自由に<wbr>働けています。</p><footer><span class="vm">Y.H</span><b>Y.Hさん</b><small>フリーランス</small></footer></article>
+      <article><div class="vph"><img src="img/voice-yh.jpg" alt="ジャングルのブランコに乗る受講生" loading="lazy" style="object-position:50% 50%"></div><span class="vq" aria-hidden="true">“</span><h3>スキルアップで<wbr>自分のキャリアが<wbr>変わりました</h3><p class="c">脱サラして<wbr>時間も<wbr>場所も<wbr>自由な<wbr>フリーランスへ。<wbr>自分が<wbr>想像していなかった<wbr>自分に<wbr>なることができました。</p><footer><span class="vm">T.R</span><b>T.Rさん</b><small>営業</small></footer></article>
+      <article><div class="vph"><img src="img/voice-tr.jpg" alt="カフェでくつろぐ受講生" loading="lazy" style="object-position:46% 34%"></div><span class="vq" aria-hidden="true">“</span><h3>就活迷子から<wbr>フリーランスへ</h3><p class="c">選択肢の<wbr>幅が<wbr>一気に<wbr>広がりました。<wbr>今では<wbr>時間も<wbr>場所も<wbr>自由に<wbr>働けています。</p><footer><span class="vm">Y.H</span><b>Y.Hさん</b><small>フリーランス</small></footer></article>
       <article><div class="vph"><img src="img/voice-wn.jpg" alt="浴衣姿の受講生" loading="lazy" style="object-position:46% 58%"></div><span class="vq" aria-hidden="true">“</span><h3>在宅ワークで家計を助ける</h3><p class="c">在宅ワークで<wbr>月10万円達成。<wbr>家計に<wbr>余裕が<wbr>でき、<wbr>生活の<wbr>質が<wbr>向上しました。</p><footer><span class="vm">W.N</span><b>W.Nさん</b><small>主婦</small></footer></article>
       <article><div class="vph"><img src="img/voice-na.jpg" alt="海を背景に撮影する受講生" loading="lazy" style="object-position:60% 60%"></div><span class="vq" aria-hidden="true">“</span><h3>フリーランスの<wbr>第一歩を<wbr>踏み出せました</h3><p class="c">雇われずに<wbr>自分で<wbr>お金を<wbr>生み出せたことに<wbr>感動。<wbr>フリーランス目指して<wbr>頑張ります。</p><footer><span class="vm">N.A</span><b>N.Aさん</b><small>学生</small></footer></article>
     </div></div>
     <div class="v-nav"><button type="button" data-dir="prev" aria-label="前の声へ"></button><button type="button" data-dir="next" aria-label="次の声へ"></button></div>
     <p class="voice-note">※個人の<wbr>感想であり、<wbr>成果を<wbr>保証する<wbr>ものでは<wbr>ありません。</p>
   </div>
+  <div class="ticker" aria-hidden="true"><div class="tk-in"><span>#SNS運用代行</span><span>#未経験から</span><span>#在宅ワーク</span><span>#副業</span><span>#スキマ時間</span><span>#会社員のまま</span><span>#完全オンライン</span><span>#Instagram</span><span>#リール動画</span><span>#案件獲得</span><span>#SNS運用代行</span><span>#未経験から</span><span>#在宅ワーク</span><span>#副業</span><span>#スキマ時間</span><span>#会社員のまま</span><span>#完全オンライン</span><span>#Instagram</span><span>#リール動画</span><span>#案件獲得</span></div></div>
 </section>
 
 <section class="sec" id="flow">
@@ -992,12 +1053,13 @@ body.doc-open .dock,body.doc-open .side{display:none}
   <div class="orbs" aria-hidden="true"><i></i><i></i></div>
   <div class="wrap">
     <div class="head"><span class="en">question</span><h2>よくあるご質問</h2></div>
-    <div class="faq">
-      <details><summary>ネットや<wbr>SNSに<wbr>詳しくないのですが、<wbr>大丈夫ですか？</summary><p>問題ありません。<wbr>ほとんどの<wbr>方が<wbr>初心者からの<wbr>スタートです。</p></details>
-      <details><summary>仕事が<wbr>忙しく、<wbr>スキマ時間での<wbr>学習に<wbr>なります。<wbr>可能ですか？</summary><p>ほとんどの<wbr>方が<wbr>本業と<wbr>並行して<wbr>始めています。<wbr>進め方は<wbr>無料カウンセリングで<wbr>一緒に<wbr>考えます。</p></details>
-      <details><summary>地方に<wbr>住んでいますが、<wbr>受講できますか？</summary><p>受講は<wbr>完全オンラインです。<wbr>お住まいの<wbr>場所を<wbr>問わず<wbr>受講できます。</p></details>
-      <details><summary>料金はいくらですか？</summary><p>プランに<wbr>よって<wbr>異なります。<wbr>目標や<wbr>ご状況に<wbr>合った<wbr>プランを、<wbr>無料カウンセリングで<wbr>ご案内します。</p></details>
-      <details><summary>顔出しや、<wbr>自分の<wbr>アカウントでの<wbr>発信は<wbr>必要ですか？</summary><p>運用代行は<wbr>クライアントの<wbr>アカウントを<wbr>運用する<wbr>仕事です。<wbr>詳しくは<wbr>無料カウンセリングで<wbr>お尋ねください。</p></details>
+    <div class="faq dm">
+      <div class="dm-head"><span class="dm-hav"><img src="img/logo-tim-o2.png" alt=""></span><div><b>Tim サポート</b><small>気に<wbr>なる<wbr>質問を<wbr>タップしてください</small></div></div>
+      <details><summary><span class="dm-av">?</span><span class="dm-q">ネットや<wbr>SNSに<wbr>詳しくないのですが、<wbr>大丈夫ですか？</span></summary><div class="dm-a"><span class="dm-read">既読</span><p>問題ありません。<wbr>ほとんどの<wbr>方が<wbr>初心者からの<wbr>スタートです。</p><img class="dm-tim" src="img/logo-tim-o2.png" alt="Tim"></div></details>
+      <details><summary><span class="dm-av">?</span><span class="dm-q">仕事が<wbr>忙しく、<wbr>スキマ時間での<wbr>学習に<wbr>なります。<wbr>可能ですか？</span></summary><div class="dm-a"><span class="dm-read">既読</span><p>ほとんどの<wbr>方が<wbr>本業と<wbr>並行して<wbr>始めています。<wbr>進め方は<wbr>無料カウンセリングで<wbr>一緒に<wbr>考えます。</p><img class="dm-tim" src="img/logo-tim-o2.png" alt="Tim"></div></details>
+      <details><summary><span class="dm-av">?</span><span class="dm-q">地方に<wbr>住んでいますが、<wbr>受講できますか？</span></summary><div class="dm-a"><span class="dm-read">既読</span><p>受講は<wbr>完全オンラインです。<wbr>お住まいの<wbr>場所を<wbr>問わず<wbr>受講できます。</p><img class="dm-tim" src="img/logo-tim-o2.png" alt="Tim"></div></details>
+      <details><summary><span class="dm-av">?</span><span class="dm-q">料金はいくらですか？</span></summary><div class="dm-a"><span class="dm-read">既読</span><p>プランに<wbr>よって<wbr>異なります。<wbr>目標や<wbr>ご状況に<wbr>合った<wbr>プランを、<wbr>無料カウンセリングで<wbr>ご案内します。</p><img class="dm-tim" src="img/logo-tim-o2.png" alt="Tim"></div></details>
+      <details><summary><span class="dm-av">?</span><span class="dm-q">顔出しや、<wbr>自分の<wbr>アカウントでの<wbr>発信は<wbr>必要ですか？</span></summary><div class="dm-a"><span class="dm-read">既読</span><p>運用代行は<wbr>クライアントの<wbr>アカウントを<wbr>運用する<wbr>仕事です。<wbr>詳しくは<wbr>無料カウンセリングで<wbr>お尋ねください。</p><img class="dm-tim" src="img/logo-tim-o2.png" alt="Tim"></div></details>
     </div>
   </div>
 </section>
@@ -1115,6 +1177,7 @@ body.doc-open .dock,body.doc-open .side{display:none}
   var v=document.querySelector('.voice');
   if(v){
     var wrap=v.parentNode,items=[].slice.call(v.children);
+    items.forEach(function(a,i){var b=document.createElement('div');b.className='vbar';b.setAttribute('aria-hidden','true');for(var j=0;j<items.length;j++){var x=document.createElement('i');if(j<=i)x.className='on';b.appendChild(x)}a.insertBefore(b,a.firstChild)});
     for(var k=0;k<3;k++)items.forEach(function(a){var c=a.cloneNode(true);c.setAttribute('aria-hidden','true');c.querySelectorAll('img').forEach(function(m){m.loading='eager'});v.appendChild(c)});
     var setW=function(){return v.scrollWidth/4},pos=0,paused=false,idle=null,drag=null,moved=false,last=0;
     function wrapPos(){var w=setW();if(pos>=w*2)pos-=w;else if(pos<w*.5)pos+=w;wrap.scrollLeft=pos}
@@ -1134,6 +1197,7 @@ body.doc-open .dock,body.doc-open .side{display:none}
     window.addEventListener('pointerup',function(){if(!drag)return;drag=null;wrap.classList.remove('drag');wrapPos()});
     wrap.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation();moved=false}},true);
     wrap.addEventListener('dragstart',function(e){e.preventDefault()});
+    wrap.addEventListener('click',function(e){var a=e.target.closest('article');if(!a)return;hold();wrap.scrollBy({left:a.getBoundingClientRect().width+parseFloat(getComputedStyle(v).columnGap||20),behavior:'smooth'});setTimeout(function(){pos=wrap.scrollLeft;wrapPos()},650);release(4000)});
     var nav=document.querySelector('.v-nav');
     if(nav)nav.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;hold();var a=v.querySelector('article'),step=a.getBoundingClientRect().width+parseFloat(getComputedStyle(v).columnGap||22);
       wrap.scrollBy({left:b.dataset.dir==='prev'?-step:step,behavior:'smooth'});setTimeout(function(){pos=wrap.scrollLeft;wrapPos()},600);release(4000)});
