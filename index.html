@@ -812,48 +812,6 @@ body.doc-open .dock,body.doc-open .side{display:none}
 #diagnosis,#voice{padding-bottom:calc(150px + var(--R)) !important}
 @media (max-width:900px){#diagnosis,#voice{padding-bottom:calc(116px + var(--R)) !important}.ticker{bottom:calc(var(--R) + 20px)}.tk-in span{font-size:13px}}
 @media (prefers-reduced-motion:reduce){.tk-in{animation:none}}
-/* ---- curriculum as post grid ---- */
-.ptabs{display:flex;justify-content:center;gap:34px;max-width:1000px;margin:0 auto 20px;border-top:1px solid var(--line);font-size:12px;letter-spacing:.14em;color:var(--muted)}
-.ptabs span{display:flex;align-items:center;gap:8px;padding-top:12px;margin-top:-1px}
-.ptabs span.on{color:var(--ink);border-top:1.5px solid var(--ink)}
-.ptabs svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.6}
-.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-width:1000px;margin-inline:auto}
-.pt{display:block;width:100%;aspect-ratio:1;padding:0;border:0;background:none;cursor:pointer;perspective:1100px;font:inherit;color:inherit;letter-spacing:inherit;text-align:left}
-.pt-in{position:relative;display:block;width:100%;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.3,.7,.2,1)}
-.pt[aria-expanded="true"] .pt-in{transform:rotateY(180deg)}
-@media (hover:hover){.pt:hover .pt-in{transform:rotateY(180deg)}}
-.pt-f,.pt-b{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;padding:20px;overflow:hidden}
-.pgrid li:first-child .pt-f,.pgrid li:first-child .pt-b{border-top-left-radius:22px}
-.pgrid li:last-child .pt-f,.pgrid li:last-child .pt-b{border-bottom-right-radius:22px}
-.pt-f{justify-content:flex-end;gap:2px;box-shadow:var(--sh1)}
-.t1 .pt-f{background:linear-gradient(160deg,#FFF8F3,var(--peach-deep))}
-.t2 .pt-f{background:linear-gradient(160deg,var(--peach),#F6D5BF)}
-.t3 .pt-f{background:linear-gradient(160deg,#FFF8F3,#F8DCCB)}
-.t4 .pt-f{background:linear-gradient(160deg,#F9E1D2,#F2C4A6)}
-.pt-ill{position:absolute;top:12%;right:10%;width:48% !important;height:auto !important;grid-column:auto !important;grid-row:auto !important}
-.pt-ill .blob{fill:rgba(255,255,255,.65)}
-.pt-no{font-family:var(--f-en);font-style:italic;font-size:15px;letter-spacing:.12em;color:var(--orange)}
-.pt b{font-family:var(--f-min);font-weight:500;font-size:20px;line-height:1.45;letter-spacing:.08em}
-.pt-hint{font-size:11px;color:var(--muted);margin-top:6px;display:flex;align-items:center;gap:6px}
-.pt-hint::before{content:"";width:14px;height:14px;border-radius:50%;border:1px solid var(--orange);background:radial-gradient(circle,var(--orange) 0 2px,transparent 2.5px)}
-.pt-b{transform:rotateY(180deg);background:var(--bg);box-shadow:var(--sh2);justify-content:center;gap:6px}
-.pt-b b{font-size:18px}
-.pt-p{font-size:13px;line-height:1.9;color:var(--muted);margin-top:4px}
-@media (max-width:900px){
-  .pgrid{grid-template-columns:repeat(2,1fr);gap:5px}
-  .pgrid li:first-child .pt-f,.pgrid li:first-child .pt-b{border-top-left-radius:18px}
-  .pgrid li:last-child .pt-f,.pgrid li:last-child .pt-b{border-bottom-right-radius:18px}
-  .pt{aspect-ratio:4/5}
-  .pt-f,.pt-b{padding:16px 14px}
-  .pt b{font-size:16px;letter-spacing:.04em}
-  .pt-b b{font-size:15px}
-  .pt-p{font-size:12px;line-height:1.8}
-  .pt-no{font-size:13px}
-  .ptabs{gap:24px;font-size:11px}
-}
-@media (max-width:900px){.pt{aspect-ratio:3/4}.pt-b{justify-content:flex-start;padding-top:18px;gap:4px}.pt-b .pt-no{font-size:12px}.pt-p{font-size:12px;line-height:1.75}}
-@media (max-width:400px){.pt{aspect-ratio:5/7}.pt b{font-size:15px;letter-spacing:.02em}.pt-b b{font-size:14px}.pt-p{font-size:11.5px;line-height:1.7;letter-spacing:.03em}.pt-ill{width:42% !important;top:9%}.pt-f,.pt-b{padding:14px 12px}}
-@media (prefers-reduced-motion:reduce){.pt-in{transition:none}}
 </style>
 </head>
 <body>
@@ -1033,24 +991,11 @@ body.doc-open .dock,body.doc-open .side{display:none}
   <div class="orbs" aria-hidden="true"><i></i><i></i></div>
   <div class="wrap">
     <div class="head"><span class="en">curriculum</span><h2>学習カリキュラム</h2><p>はじめに<wbr>目標と<wbr>理想の<wbr>働き方を<wbr>決め、<wbr>そこから<wbr>逆算して<wbr>進めます。<wbr>回数無制限の<wbr>個別セッションで、<wbr>一段ずつ確実に。</p></div>
-    <div class="ptabs" aria-hidden="true"><span class="on"><svg viewBox="0 0 24 24"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>カリキュラム</span><span>4 STEPS</span></div>
-    <ol class="pgrid">
-      <li><button class="pt t1" type="button" aria-expanded="false" aria-label="STEP 01 マインドセット：詳しく見る"><span class="pt-in">
-        <span class="pt-f"><svg class="ill pt-ill" viewBox="0 0 120 120" aria-hidden="true"><circle class="blob" cx="66" cy="64" r="42"/><path d="M8 98H112"/><path d="M14 98L46 44L62 70L74 54L104 98"/><path d="M37 59l9-6l8 7"/><path d="M46 44V18"/><path class="ac" d="M46 18L66 25L46 33"/><circle class="ac" cx="92" cy="30" r="7"/><path class="ac" d="M92 16v-4M105 30h4M102 20l3-3"/></svg><span class="pt-no">STEP 01</span><b>マインドセット</b><span class="pt-hint">タップで詳しく</span></span>
-        <span class="pt-b"><span class="pt-no">STEP 01</span><b>マインドセット</b><span class="pt-p">収入目標と<wbr>使える<wbr>時間を<wbr>整理し、<wbr>実現できる<wbr>計画を<wbr>立てます。<wbr>続ける<wbr>ための<wbr>考え方も<wbr>ここで<wbr>固めます。</span></span>
-      </span></button></li>
-      <li><button class="pt t2" type="button" aria-expanded="false" aria-label="STEP 02 アカウント構築：詳しく見る"><span class="pt-in">
-        <span class="pt-f"><svg class="ill pt-ill" viewBox="0 0 120 120" aria-hidden="true"><circle class="blob" cx="66" cy="64" r="42"/><rect x="37" y="12" width="46" height="96" rx="8"/><path d="M54 20h12"/><circle class="ac" cx="51" cy="38" r="7"/><path d="M63 35h13M63 42h8"/><rect x="44" y="54" width="14" height="14" rx="2"/><rect class="ac" x="62" y="54" width="14" height="14" rx="2"/><rect x="44" y="72" width="14" height="14" rx="2"/><rect x="62" y="72" width="14" height="14" rx="2"/><path d="M54 98h12"/><path class="ac" d="M100 44c-3-5-10-2-8 3c1 3 5 5 8 8c3-3 7-5 8-8c2-5-5-8-8-3z"/><path d="M20 70v10M15 75h10"/></svg><span class="pt-no">STEP 02</span><b>アカウント構築</b><span class="pt-hint">タップで詳しく</span></span>
-        <span class="pt-b"><span class="pt-no">STEP 02</span><b>アカウント構築</b><span class="pt-p">コンセプト設計、<wbr>プロフィール、<wbr>デザイン。<wbr>伸びる<wbr>アカウントの<wbr>土台を<wbr>自分の<wbr>手で<wbr>つくります。</span></span>
-      </span></button></li>
-      <li><button class="pt t3" type="button" aria-expanded="false" aria-label="STEP 03 運用・改善：詳しく見る"><span class="pt-in">
-        <span class="pt-f"><svg class="ill pt-ill" viewBox="0 0 120 120" aria-hidden="true"><circle class="blob" cx="66" cy="64" r="42"/><path d="M14 100H108"/><rect x="24" y="76" width="13" height="24"/><rect x="44" y="62" width="13" height="38"/><rect x="64" y="50" width="13" height="50"/><rect x="84" y="36" width="13" height="64"/><path class="ac" d="M20 60L44 44L60 50L98 16"/><path class="ac" d="M85 16H98V29"/><circle class="ac" cx="44" cy="44" r="2.500"/><circle class="ac" cx="60" cy="50" r="2.500"/></svg><span class="pt-no">STEP 03</span><b>運用・改善</b><span class="pt-hint">タップで詳しく</span></span>
-        <span class="pt-b"><span class="pt-no">STEP 03</span><b>運用・改善</b><span class="pt-p">投稿と<wbr>台本を<wbr>作り、<wbr>数字を<wbr>見て<wbr>改善する。<wbr>運用代行の<wbr>実務を<wbr>一通り<wbr>経験します。</span></span>
-      </span></button></li>
-      <li><button class="pt t4" type="button" aria-expanded="false" aria-label="STEP 04 収益化：詳しく見る"><span class="pt-in">
-        <span class="pt-f"><svg class="ill pt-ill" viewBox="0 0 120 120" aria-hidden="true"><circle class="blob" cx="66" cy="64" r="42"/><path d="M28 16H68L84 32V102H28Z"/><path d="M68 16V32H84"/><path d="M39 46H72M39 58H72M39 70H56"/><path class="ac" d="M39 84l5 5l9-10"/><circle class="ac cover" cx="86" cy="86" r="18"/><path class="ac" d="M79 77L86 87L93 77M86 87V97M79 88H93"/></svg><span class="pt-no">STEP 04</span><b>収益化</b><span class="pt-hint">タップで詳しく</span></span>
-        <span class="pt-b"><span class="pt-no">STEP 04</span><b>収益化</b><span class="pt-p">営業と<wbr>提案の<wbr>方法を<wbr>学び、<wbr>実際に<wbr>案件を<wbr>取りに<wbr>いきます。<wbr>単価の<wbr>上げ方まで<wbr>扱います。</span></span>
-      </span></button></li>
+    <ol class="steps">
+      <li><div class="no"><small>step</small><b>01</b></div><div><h3>マインドセット</h3><p>収入目標と<wbr>使える<wbr>時間を<wbr>整理し、<wbr>実現できる<wbr>計画を<wbr>立てます。<wbr>続ける<wbr>ための<wbr>考え方も<wbr>ここで<wbr>固めます。</p></div><svg class="ill" viewBox="0 0 120 120" aria-hidden="true"><circle class="blob" cx="66" cy="64" r="42"/><path d="M8 98H112"/><path d="M14 98L46 44L62 70L74 54L104 98"/><path d="M37 59l9-6l8 7"/><path d="M46 44V18"/><path class="ac" d="M46 18L66 25L46 33"/><circle class="ac" cx="92" cy="30" r="7"/><path class="ac" d="M92 16v-4M105 30h4M102 20l3-3"/></svg></li>
+      <li><div class="no"><small>step</small><b>02</b></div><div><h3>アカウント構築</h3><p>コンセプト設計、<wbr>プロフィール、<wbr>デザイン。<wbr>伸びる<wbr>アカウントの<wbr>土台を<wbr>自分の<wbr>手で<wbr>つくります。</p></div><svg class="ill" viewBox="0 0 120 120" aria-hidden="true"><circle class="blob" cx="66" cy="64" r="42"/><rect x="37" y="12" width="46" height="96" rx="8"/><path d="M54 20h12"/><circle class="ac" cx="51" cy="38" r="7"/><path d="M63 35h13M63 42h8"/><rect x="44" y="54" width="14" height="14" rx="2"/><rect class="ac" x="62" y="54" width="14" height="14" rx="2"/><rect x="44" y="72" width="14" height="14" rx="2"/><rect x="62" y="72" width="14" height="14" rx="2"/><path d="M54 98h12"/><path class="ac" d="M100 44c-3-5-10-2-8 3c1 3 5 5 8 8c3-3 7-5 8-8c2-5-5-8-8-3z"/><path d="M20 70v10M15 75h10"/></svg></li>
+      <li><div class="no"><small>step</small><b>03</b></div><div><h3>運用・改善</h3><p>投稿と<wbr>台本を<wbr>作り、<wbr>数字を<wbr>見て<wbr>改善する。<wbr>運用代行の<wbr>実務を<wbr>一通り<wbr>経験します。</p></div><svg class="ill" viewBox="0 0 120 120" aria-hidden="true"><circle class="blob" cx="66" cy="64" r="42"/><path d="M14 100H108"/><rect x="24" y="76" width="13" height="24"/><rect x="44" y="62" width="13" height="38"/><rect x="64" y="50" width="13" height="50"/><rect x="84" y="36" width="13" height="64"/><path class="ac" d="M20 60L44 44L60 50L98 16"/><path class="ac" d="M85 16H98V29"/><circle class="ac" cx="44" cy="44" r="2.500"/><circle class="ac" cx="60" cy="50" r="2.500"/></svg></li>
+      <li><div class="no"><small>step</small><b>04</b></div><div><h3>収益化</h3><p>営業と<wbr>提案の<wbr>方法を<wbr>学び、<wbr>実際に<wbr>案件を<wbr>取りに<wbr>いきます。<wbr>単価の<wbr>上げ方まで<wbr>扱います。</p></div><svg class="ill" viewBox="0 0 120 120" aria-hidden="true"><circle class="blob" cx="66" cy="64" r="42"/><path d="M28 16H68L84 32V102H28Z"/><path d="M68 16V32H84"/><path d="M39 46H72M39 58H72M39 70H56"/><path class="ac" d="M39 84l5 5l9-10"/><circle class="ac cover" cx="86" cy="86" r="18"/><path class="ac" d="M79 77L86 87L93 77M86 87V97M79 88H93"/></svg></li>
     </ol>
     <p class="goal">自分の力で案件を獲得し、<i class="nw" style="font-style:normal"><span>続けられる状態</span>へ。</i></p>
   </div>
@@ -1259,7 +1204,7 @@ body.doc-open .dock,body.doc-open .side{display:none}
   }
   if(reduce||!('IntersectionObserver' in window))return;
   var vh=window.innerHeight;
-  var groups=['.head','.dg','.wv li','.wv-fig','.wv-out','.turn','.about > *','.feat article','.job-lead','.job','.skills','.ptabs','.pgrid li','.goal','.life-grid > *','.job-pic','.msg .ph','.msg-copy','.voice-wrap','.flow2','.flow2 li','.flow-cta','.faq','.final .inner'];
+  var groups=['.head','.dg','.wv li','.wv-fig','.wv-out','.turn','.about > *','.feat article','.job-lead','.job','.skills','.steps li','.goal','.life-grid > *','.job-pic','.msg .ph','.msg-copy','.voice-wrap','.flow2','.flow2 li','.flow-cta','.faq','.final .inner'];
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove('wait');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});
   groups.forEach(function(sel){
     var prev=null,i=0;
@@ -1367,10 +1312,6 @@ body.doc-open .dock,body.doc-open .side{display:none}
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
   window.addEventListener('hashchange',route);route();
 })();
-</script>
-
-<script>
-(function(){document.querySelectorAll('.pt').forEach(function(b){b.addEventListener('click',function(){var o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',o?'false':'true')})})})();
 </script>
 
 </body>
