@@ -733,6 +733,27 @@ body.doc-open .dock,body.doc-open .side{display:none}
 .cta-qr p{font-size:12px;color:var(--muted);line-height:1.8}
 @media (max-width:900px){.cta-qr{display:none}}
 .nums b.nb-txt{font-size:22px;letter-spacing:.06em}
+/* ---- voice: swipeable carousel ---- */
+.voice-wrap{overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;cursor:grab;padding-block:14px 26px;margin-block:-14px -26px}
+.voice-wrap::-webkit-scrollbar{display:none}
+.voice-wrap.drag{cursor:grabbing}
+.voice-wrap.drag .voice{user-select:none;-webkit-user-select:none}
+.voice-wrap img{-webkit-user-drag:none;user-select:none}
+.voice.run{animation:none}
+.v-nav{display:flex;justify-content:center;gap:14px;margin-top:30px}
+.v-nav button{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--bg);box-shadow:var(--sh1);cursor:pointer;position:relative;transition:border-color .2s,background .2s}
+.v-nav button::after{content:"";position:absolute;left:50%;top:50%;width:9px;height:9px;border-top:1.5px solid var(--orange);border-right:1.5px solid var(--orange);transform:translate(-65%,-50%) rotate(45deg)}
+.v-nav button[data-dir="prev"]::after{transform:translate(-35%,-50%) rotate(-135deg)}
+.v-nav button:hover{border-color:var(--orange);background:var(--peach)}
+.voice-note{margin-top:18px}
+/* ---- faq size ---- */
+.faq summary{font-size:15px}
+@media (max-width:600px){
+  .faq summary{font-size:14px;letter-spacing:.04em;line-height:1.75;padding:20px 32px 20px 38px}
+  .faq summary::before{font-size:24px;top:13px}
+  .faq summary::after{top:27px}
+  .faq details p{padding:0 8px 22px 38px;font-size:13px}
+}
 </style>
 </head>
 <body>
@@ -916,7 +937,7 @@ body.doc-open .dock,body.doc-open .side{display:none}
       <li><div class="no"><small>step</small><b>03</b></div><div><h3>運用・改善</h3><p>投稿と<wbr>台本を<wbr>作り、<wbr>数字を<wbr>見て<wbr>改善する。<wbr>運用代行の<wbr>実務を<wbr>一通り<wbr>経験します。</p></div><svg class="ill" viewBox="0 0 120 120" aria-hidden="true"><circle class="blob" cx="66" cy="64" r="42"/><path d="M14 100H108"/><rect x="24" y="76" width="13" height="24"/><rect x="44" y="62" width="13" height="38"/><rect x="64" y="50" width="13" height="50"/><rect x="84" y="36" width="13" height="64"/><path class="ac" d="M20 60L44 44L60 50L98 16"/><path class="ac" d="M85 16H98V29"/><circle class="ac" cx="44" cy="44" r="2.500"/><circle class="ac" cx="60" cy="50" r="2.500"/></svg></li>
       <li><div class="no"><small>step</small><b>04</b></div><div><h3>収益化</h3><p>営業と<wbr>提案の<wbr>方法を<wbr>学び、<wbr>実際に<wbr>案件を<wbr>取りに<wbr>いきます。<wbr>単価の<wbr>上げ方まで<wbr>扱います。</p></div><svg class="ill" viewBox="0 0 120 120" aria-hidden="true"><circle class="blob" cx="66" cy="64" r="42"/><path d="M28 16H68L84 32V102H28Z"/><path d="M68 16V32H84"/><path d="M39 46H72M39 58H72M39 70H56"/><path class="ac" d="M39 84l5 5l9-10"/><circle class="ac cover" cx="86" cy="86" r="18"/><path class="ac" d="M79 77L86 87L93 77M86 87V97M79 88H93"/></svg></li>
     </ol>
-    <p class="goal">自分の力で案件を獲得し、<span>続けられる状態</span>へ。</p>
+    <p class="goal">自分の力で案件を獲得し、<i class="nw" style="font-style:normal"><span>続けられる状態</span>へ。</i></p>
   </div>
 </section>
 
@@ -948,6 +969,7 @@ body.doc-open .dock,body.doc-open .side{display:none}
       <article><div class="vph"><img src="img/voice-wn.jpg" alt="浴衣姿の受講生" loading="lazy" style="object-position:46% 58%"></div><span class="vq" aria-hidden="true">“</span><h3>在宅ワークで家計を助ける</h3><p class="c">在宅ワークで<wbr>月10万円達成。<wbr>家計に<wbr>余裕が<wbr>でき、<wbr>生活の<wbr>質が<wbr>向上しました。</p><footer><span class="vm">W.N</span><b>W.Nさん</b><small>主婦</small></footer></article>
       <article><div class="vph"><img src="img/voice-na.jpg" alt="海を背景に撮影する受講生" loading="lazy" style="object-position:60% 60%"></div><span class="vq" aria-hidden="true">“</span><h3>フリーランスの<wbr>第一歩を<wbr>踏み出せました</h3><p class="c">雇われずに<wbr>自分で<wbr>お金を<wbr>生み出せたことに<wbr>感動。<wbr>フリーランス目指して<wbr>頑張ります。</p><footer><span class="vm">N.A</span><b>N.Aさん</b><small>学生</small></footer></article>
     </div></div>
+    <div class="v-nav"><button type="button" data-dir="prev" aria-label="前の声へ"></button><button type="button" data-dir="next" aria-label="次の声へ"></button></div>
     <p class="voice-note">※個人の<wbr>感想であり、<wbr>成果を<wbr>保証する<wbr>ものでは<wbr>ありません。</p>
   </div>
 </section>
@@ -1091,10 +1113,30 @@ body.doc-open .dock,body.doc-open .side{display:none}
   }
   /* 受講生の声: 複製して途切れなく流す */
   var v=document.querySelector('.voice');
-  if(v&&!reduce){
-    var items=[].slice.call(v.children);
-    for(var k=0;k<3;k++)items.forEach(function(a){var c=a.cloneNode(true);c.setAttribute('aria-hidden','true');v.appendChild(c)});
-    v.classList.add('run');
+  if(v){
+    var wrap=v.parentNode,items=[].slice.call(v.children);
+    for(var k=0;k<3;k++)items.forEach(function(a){var c=a.cloneNode(true);c.setAttribute('aria-hidden','true');c.querySelectorAll('img').forEach(function(m){m.loading='eager'});v.appendChild(c)});
+    var setW=function(){return v.scrollWidth/4},pos=0,paused=false,idle=null,drag=null,moved=false,last=0;
+    function wrapPos(){var w=setW();if(pos>=w*2)pos-=w;else if(pos<w*.5)pos+=w;wrap.scrollLeft=pos}
+    function hold(){paused=true;clearTimeout(idle)}
+    function release(ms){clearTimeout(idle);idle=setTimeout(function(){pos=wrap.scrollLeft;paused=false},ms||2500)}
+    requestAnimationFrame(function(){pos=setW();wrap.scrollLeft=pos});
+    function tick(t){var dt=last?Math.min(t-last,64):16;last=t;if(!paused&&!reduce&&!document.hidden){pos+=dt*.028;wrapPos()}requestAnimationFrame(tick)}
+    requestAnimationFrame(tick);
+    wrap.addEventListener('scroll',function(){if(paused){pos=wrap.scrollLeft;var w=setW();if(pos>=w*2.5||pos<w*.3)wrapPos()}},{passive:true});
+    wrap.addEventListener('touchstart',hold,{passive:true});
+    wrap.addEventListener('touchend',function(){release(3000)},{passive:true});
+    wrap.addEventListener('wheel',function(e){if(Math.abs(e.deltaX)>Math.abs(e.deltaY)){hold();release(2500)}},{passive:true});
+    wrap.addEventListener('mouseenter',hold);
+    wrap.addEventListener('mouseleave',function(){if(!drag)release(800)});
+    wrap.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')return;hold();drag={x:e.clientX,s:wrap.scrollLeft};moved=false;wrap.classList.add('drag')});
+    window.addEventListener('pointermove',function(e){if(!drag)return;var dx=e.clientX-drag.x;if(Math.abs(dx)>4)moved=true;wrap.scrollLeft=drag.s-dx;pos=wrap.scrollLeft});
+    window.addEventListener('pointerup',function(){if(!drag)return;drag=null;wrap.classList.remove('drag');wrapPos()});
+    wrap.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation();moved=false}},true);
+    wrap.addEventListener('dragstart',function(e){e.preventDefault()});
+    var nav=document.querySelector('.v-nav');
+    if(nav)nav.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;hold();var a=v.querySelector('article'),step=a.getBoundingClientRect().width+parseFloat(getComputedStyle(v).columnGap||22);
+      wrap.scrollBy({left:b.dataset.dir==='prev'?-step:step,behavior:'smooth'});setTimeout(function(){pos=wrap.scrollLeft;wrapPos()},600);release(4000)});
   }
   if(reduce||!('IntersectionObserver' in window))return;
   var vh=window.innerHeight;
