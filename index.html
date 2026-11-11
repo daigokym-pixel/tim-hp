@@ -171,7 +171,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .steps p{color:var(--muted);font-size:14px}
 .goal{max-width:820px;margin:48px auto 0;text-align:center;font-family:var(--f-min);font-size:clamp(17px,2.4vw,21px);background:var(--peach);padding:26px 20px}
 .goal span{color:var(--orange)}
-@media (max-width:560px){.steps li{grid-template-columns:64px 1fr;gap:18px}.steps .no b{font-size:42px}}
+@media (max-width:760px){.steps li{grid-template-columns:64px 1fr;gap:18px}.steps .no b{font-size:42px}}
 
 /* life */
 .life{columns:2;column-gap:64px;max-width:820px;margin-inline:auto}
@@ -293,11 +293,18 @@ article:hover .ph img{transform:scale(1.06)}
 .ill .ac{stroke:var(--orange)}
 .ill .blob{fill:var(--bg);stroke:none}
 .ill .cover{fill:var(--peach)}
-@media (max-width:560px){
+@media (max-width:760px){
+  .steps h3{font-size:20px}
   .steps li{grid-template-columns:64px 1fr}
   .steps li>div:nth-child(2){grid-column:2;grid-row:1}
   .ill{grid-column:2;grid-row:1;align-self:start;width:64px;height:64px}
   .steps h3{min-height:64px;display:flex;align-items:center;padding-right:70px;margin-bottom:8px}
+}
+@media (max-width:420px){
+  .steps li,.steps li:first-child{grid-template-columns:52px minmax(0,1fr);gap:12px;padding-right:16px}
+  .steps .no b{font-size:36px}
+  .steps h3{font-size:17px;letter-spacing:.04em;padding-right:54px;min-height:50px}
+  .ill{width:48px;height:48px}
 }
 /* ---- flow cards ---- */
 .flow2{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;position:relative;padding-top:28px}
